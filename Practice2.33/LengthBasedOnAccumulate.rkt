@@ -1,5 +1,5 @@
 #lang racket
-(require (planet schematics/schemeunit:3:4) "Accumulate.rkt")
+(require "Accumulate.rkt")
 
 (define (length sequence)
   (accumulate 

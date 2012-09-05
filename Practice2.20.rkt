@@ -1,9 +1,9 @@
 #lang racket
 (define (sameParity . l)
-   (cons (car l) (sameParityImpl (car l) (cdr l))))
+  (cons (car l) (sameParityImpl (car l) (cdr l))))
 
 (define (sameParityImpl first rest)
-    (cond ((null? rest) null)
+  (cond ((null? rest) null)
         ((bothOddOrEven first (car rest)) 
          (cons (car rest) (sameParityImpl first (cdr rest))))
         (else (sameParityImpl first (cdr rest)))))
