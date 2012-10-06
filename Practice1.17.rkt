@@ -12,3 +12,5 @@
 
 (define (halve x)
   (/ x 2))
+
+;this solves 1.18 as well, accidentally
