@@ -1,5 +1,5 @@
 #lang racket
-;迭代实现，反复求平方
+;迭代实现，反复求平方 O(log n)
 (define (fast-expt base n)
   (fast-expt-iter base n 1))
 
@@ -8,7 +8,7 @@
         ((odd? counter) (fast-expt-iter base (- counter 1) (* base a)))
         ((even? counter) (fast-expt-iter (* base base) (/ counter 2) a))))
 
-;递归实现
+;递归实现 O(n)
 (define (slow-expt base n)
   (if (= n 0) 1
       (* base (slow-expt base (- n 1)))))
