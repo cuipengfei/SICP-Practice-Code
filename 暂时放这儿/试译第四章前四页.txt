@@ -13,21 +13,21 @@ While the ideas behind functional programming have become popular only
 in the past couple of years, the underlying platform features that allow us to
 program in a functional way in C# have been built into the CLR since around
 2005.
-近几年来，函数式编程语言的普及程度有所提升，其某些编程技巧也受到了欢迎。即使我们正在使用的
-语言是以面向对象为其主要特征的，这些技巧也会对我们颇有帮助。虽然函数式编程的理念只是在近
-几年才受到越来越多的关注，但是早在2005年左右CLR就已经提供了足够的平台特性来让我们可以用C#
+近几年来，函数式编程语言的普及程度有所提升，函数式编程的一些技巧也受到了欢迎。即使我们正在使用
+的是一门以面向对象为其主要特征的语言，这些技巧也会对我们颇有帮助。虽然函数式编程的理念只是在近
+几年来才受到越来越多的关注，但是早在2005年左右CLR就已经提供了足够的平台特性来让我们可以用C#
 去写函数式的代码了。
 
 The C# language has evolved since then to the point where we can write code
 in C# that looks quite similar to that which could be written in F#—Microsoft’s
 functional programming language that has recently been made a first-class
 language for Visual Studio.
-之后，C#也不断改进，以至于现在我们已经可以用C#写出看起来和F#颇为相似的代码了。F#是微软推出的
-函数式编程语言，进来已经成为Visual Studio环境中的一等公民。
+之后，C#也不断演进，以至于现在我们已经可以用C#写出看起来和F#颇为相似的代码了。F#是微软推出的
+一门函数式编程语言，最近Visual Studio已经为F#提供了一等公民的支持。
 
 The functional programming ideas themselves have been around for at least
 half a century.
-函数式编程的理念已经存在至少半个世纪之久了。
+函数式编程的理念发轫于至少半个世纪之前。
 
 In this essay, we’ll demonstrate these techniques with examples in C# and
 Ruby, although the ideas presented are also applicable in other similar languages
