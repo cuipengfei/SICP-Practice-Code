@@ -1,0 +1,121 @@
+CHAPTER 4
+Functional Programming Techniques
+in Object-Oriented Languages
+by Marc Needham
+第四章
+面向对象语言中的函数式编程技巧
+Marc Needham
+
+Functional programming languages have grown in popularity over the past
+few years, which has popularized some useful programming techniques that
+we can use even if our language of choice is predominantly object-oriented.
+While the ideas behind functional programming have become popular only
+in the past couple of years, the underlying platform features that allow us to
+program in a functional way in C# have been built into the CLR since around
+2005.
+近几年来，函数式编程语言的普及程度有所提升，其某些编程技巧也受到了欢迎。即使我们正在使用的
+语言是以面向对象为其主要特征的，这些技巧也会对我们颇有帮助。虽然函数式编程的理念只是在近
+几年才受到越来越多的关注，但是早在2005年左右CLR就已经提供了足够的平台特性来让我们可以用C#
+去写函数式的代码了。
+
+The C# language has evolved since then to the point where we can write code
+in C# that looks quite similar to that which could be written in F#—Microsoft’s
+functional programming language that has recently been made a first-class
+language for Visual Studio.
+之后，C#也不断改进，以至于现在我们已经可以用C#写出看起来和F#颇为相似的代码了。F#是微软推出的
+函数式编程语言，进来已经成为Visual Studio环境中的一等公民。
+
+The functional programming ideas themselves have been around for at least
+half a century.
+函数式编程的理念已经存在至少半个世纪之久了。
+
+In this essay, we’ll demonstrate these techniques with examples in C# and
+Ruby, although the ideas presented are also applicable in other similar languages
+such as Scala and Java.
+在本文中，我们将展示一些函数式编程技巧的实例。尽管这些实例是用C#和Ruby编写的，但是其背后的理念同
+样也适用于Scala、Java或其他一些类似的语言。
+
+4.1 Collections
+4.1 集合
+
+When it comes to understanding how a functional approach to problem
+solving can be used, one of the first things to consider is the way that we view
+collections.
+想要理解如何用函数式编程去解决问题，我们先来回顾一下我们是如何看待集合的。
+
+The Transformational Mind-Set
+以变化的眼光看集合
+
+The most interesting mental paradigm switch when learning how to program
+in a functional way is how you deal with collections.
+学习函数式编程时，要做的最有趣的一个思维方式的转变就是处理集合的方式。
+
+With an imperative approach, you think about each item in the collection
+individually, and you typically use a for each loop when working with that
+collection.
+在命令式语言中，我们孤立地看待集合中的每一个元素，我们通常会用一个for each循环来遍历一个集合。
+
+If we take a functional approach to solving problems with collections, our
+approach becomes much more about viewing the collection as a whole—
+something that Patrick Logan refers to as a transformational mind-set.
+当我们用函数式编程处理集合时，我们会把集合看做一个整体，Patrick Logan称之为“以变化的眼光看集合”。
+
+We look at the original collection that we have and then visualize how we
+want it to look once we’ve transformed it, before working out which functions
+we need to apply to the collection to get it into that state.
+Original -> () -> () -> () -> Final
+It closely resembles the pipes and filters architecture where the data moves
+through a pipe, and the filters are represented by the different functions that
+can be applied to that data.
+Our approach to dealing with collections in this way is possible by using what
+Bill Six calls functional collection patterns.3
+There are three main categories of operations on collections.
+Map
+The map pattern applies a function to each element in the collection and
+returns a new collection with the results of each function application (see
+Figure 1, The Map Function, on page 73). Therefore, if we want to get the first
+names of a group of people, we would write the following code:
+var names = people.Select(person => person.FirstName)
+rather than the following imperative equivalent:
+
+Figure 1—The Map Function
+var names = new List<string>();
+foreach(var person : people)
+{
+names.Add(person.FirstName);
+}
+Filter
+The filter pattern applies a predicate to each element in the collection and
+returns a new collection containing the elements that returned true for the
+predicate provided.
+If we want to get only the people older than twenty-one years old, we would
+write the following code:
+
+var peopleOlderThan21 = people.Where(person => person.Age > 21);
+which is again simpler to read than the following imperative equivalent:
+var peopleOlderThan21 = new List<Person>();
+foreach(var person : people)
+{
+if(person.Age > 21)
+{
+peopleOlderThan21.Add(person);
+}
+}
+Reduce
+The reduce pattern converts a collection to a single value by combining each
+element in turn via a user-supplied function.
+If we want to get the ages of a group of people, we would write the following
+code:
+var sumOfAges = people.Aggregate(0, (sum, person) => sum + person.Age);
+as compared to this:
+var sumOfAges = 0
+foreach(var person : people)
+{
+sumOfAges += person.Age;
+}
+Embracing Collections
+Once we get into the habit of applying functions to collections, we start to see
+more opportunities to use a collection where before we might have used a
+different approach.
+Quite frequently I’ve noticed that we end up with code that more closely
+describes the problem we’re trying to solve.
