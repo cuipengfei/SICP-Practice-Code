@@ -67,7 +67,7 @@ Original -> () -> () -> () -> Final
 It closely resembles the pipes and filters architecture where the data moves
 through a pipe, and the filters are represented by the different functions that
 can be applied to that data.
-在考虑该用哪些函数来对集合做处理之前，我们先观察集合的初始状态并想象出操作之后该集合会处于什么
+在考虑该用哪些函数来对集合做处理之前，我们先观察集合的初始状态并想象出我们想要将集合变化到什么
 样的最终状态。
 初始状态 -> () -> () -> () -> 最终状态
 这和管道过滤器式的架构非常相似。在管道过滤器中，数据流经一个管道，各种处理数据的函数在管道中充
@@ -75,10 +75,10 @@ can be applied to that data.
 
 Our approach to dealing with collections in this way is possible by using what
 Bill Six calls functional collection patterns.
-我们这种处理集合的方式被Bill Six称为函数式集合模式。
+我们可以使用“映射、过滤、化简”的模式来实现上述的集合处理，这几种模式被Bill Six称为“函数式集合模式”。
 
 There are three main categories of operations on collections.
-对集合的操作主要可以分为三种。
+对集合的操作主要可以分为三种模式。
 
 Map
 映射
@@ -94,14 +94,14 @@ foreach(var person : people)
 {
 names.Add(person.FirstName);
 }
-映射操作将一个函数作用于一个集合中的每个元素上，并将函数的结果置入一个新的集合中返回（见*页插
-图1，映射操作）。这样，如果我们想要获取一组人的名的话，可以用如下的代码来实现：
+映射模式将一个函数作用于一个集合中的每个元素上，并将每次函数调用的结果置入一个新的集合中返
+回（见*页插图1，映射操作）。我们可以用如下的代码来获取一组人的名：
 var names = people.Select(person => person.FirstName)
-而不是用如下的命令式代码来实现：
+而不用写如下的命令式代码：
 var names = new List<string>();
 foreach(var person : people)
 {
-names.Add(person.FirstName);
+	names.Add(person.FirstName);
 }
 
 Filter
@@ -122,10 +122,11 @@ foreach(var person : people)
 		peopleOlderThan21.Add(person);
 	}
 }
-过滤操作将一个谓词函数作用于集合中的每个元素上，能够使谓词函数返回true的元素将被归入新集合并返回。
-如果我们想要在一组人中找出年龄大于21岁的人的话，我们可以用如下的代码来实现：
+过滤模式将一个谓词函数作用于集合中的每个元素上，能够使谓词函数返回true的元素将被置入一个
+新的集合并返回。
+我们可以用如下的代码来在一组人中找出年龄大于21岁的人：
 var peopleOlderThan21 = people.Where(person => person.Age > 21);
-下面的命令式代码与上面的代码等价，但却不如上面的代码简单：
+下面的命令式代码虽与上面的代码等价，但不如上面的代码易读：
 var peopleOlderThan21 = new List<Person>();
 foreach(var person : people)
 {
@@ -149,8 +150,8 @@ foreach(var person : people)
 {
 	sumOfAges += person.Age;
 }
-化简操作将一个用户提供的函数作用于集合中的每一个元素上，并将所有的返回值合并成一个单值。
-如果我们想要得到一组人的年龄总和的话，我们可以用如下的代码来实现：
+化简模式将一个用户提供的函数作用于集合中的每一个元素上，并将所有的返回值合并成一个单值。
+我们可以用如下的代码来得到一组人的年龄的总和：
 var sumOfAges = people.Aggregate(0, (sum, person) => sum + person.Age);
 下面是等价的命令式代码：
 var sumOfAges = 0
