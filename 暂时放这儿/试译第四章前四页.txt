@@ -161,8 +161,14 @@ foreach(var person : people)
 }
 
 Embracing Collections
+拥抱集合
+
 Once we get into the habit of applying functions to collections, we start to see
 more opportunities to use a collection where before we might have used a
 different approach.
+习惯了用函数式的方式去操作集合之后，我们会发现有很多问题是可以用集合操作来解决的，而在此之前我们
+可能会用其他的方式去解决。
+
 Quite frequently I’ve noticed that we end up with code that more closely
 describes the problem we’re trying to solve.
+我很多时候都会发现函数式的解决方案能够更加准确的描述我们想要解决的问题。
