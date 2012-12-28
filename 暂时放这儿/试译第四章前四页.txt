@@ -58,7 +58,8 @@ collection.
 If we take a functional approach to solving problems with collections, our
 approach becomes much more about viewing the collection as a whole—
 something that Patrick Logan refers to as a transformational mind-set.
-当我们用函数式编程处理集合时，我们会把集合看做一个整体，Patrick Logan称之为“以变化的眼光看集合”。
+当我们用函数式编程处理与集合相关的问题时，我们会把集合看做一个整体，Patrick Logan称之
+为“以变化的眼光看集合”。
 
 We look at the original collection that we have and then visualize how we
 want it to look once we’ve transformed it, before working out which functions
@@ -67,7 +68,7 @@ Original -> () -> () -> () -> Final
 It closely resembles the pipes and filters architecture where the data moves
 through a pipe, and the filters are represented by the different functions that
 can be applied to that data.
-在考虑该用哪些函数来对集合做处理之前，我们先观察集合的初始状态并想象出我们想要将集合变化到什么
+在考虑该用哪些函数来对集合做处理之前，我们先观察集合的初始状态并想象出我们希望将集合变化到什么
 样的最终状态。
 初始状态 -> () -> () -> () -> 最终状态
 这和管道过滤器式的架构非常相似。在管道过滤器中，数据流经一个管道，各种处理数据的函数在管道中充
@@ -75,7 +76,7 @@ can be applied to that data.
 
 Our approach to dealing with collections in this way is possible by using what
 Bill Six calls functional collection patterns.
-我们可以使用“映射、过滤、化简”的模式来实现上述的集合处理，这几种模式被Bill Six称为“函数式集合模式”。
+我们可以使用一些模式来实现上述的集合处理，这几种模式被Bill Six称为“函数式集合模式”。
 
 There are three main categories of operations on collections.
 对集合的操作主要可以分为三种模式。
@@ -171,4 +172,4 @@ different approach.
 
 Quite frequently I’ve noticed that we end up with code that more closely
 describes the problem we’re trying to solve.
-我很多时候都会发现函数式的解决方案能够更加准确的描述我们想要解决的问题。
+我很多时候都会发现函数式的解决方案能够更加准确地描述我们想要解决的问题。
