@@ -1,6 +1,6 @@
 #lang racket
 (define (sqrt-iter guess x)
-  (if (good-enough? guess x)
+  (if (good-enough? (* guess guess) x)
       guess
       (sqrt-iter (improve guess x) x)))
 
@@ -10,13 +10,10 @@
 (define (average x y)
   (/ (+ x y) 2))
 
-(define (good-enough? guess x)
-  (< (/ (abs (- (sqr guess) x)) x) 0.001))
-
 (define (sqrt x)
   (sqrt-iter 1.0 x))
 
-
+;1.8
 
 (define (cube-root-iter guess x)
   (if (good-enough-cube? guess x)
@@ -31,3 +28,7 @@
 
 (define (cube-root x)
   (cube-root-iter 1.0 x))
+
+;common
+(define (good-enough? guessed x)
+  (< (/ (abs (- guessed x)) x) 0.001))
