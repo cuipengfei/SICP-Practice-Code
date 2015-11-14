@@ -6,7 +6,7 @@
   (if (null? lst) 
       lst 
       (if (predicate (car lst))
-          (append (list (car lst)) (filter (cdr lst) predicate))
+          (cons (car lst) (filter (cdr lst) predicate))
           (filter (cdr lst) predicate))))
 
 (same-parity 1 2 3 4 5 6 7)
